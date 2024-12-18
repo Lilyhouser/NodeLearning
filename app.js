@@ -1,7 +1,12 @@
-const _ = require('lodash');
+const {createReadStream} = require('fs');
 
-const items = [1, [2, [3, [4]]]]
+const stream = createReadStream('./content/first.txt');
+stream.on('data', (result) => {
+    console.log(result);
+    
+})
 
-const newItems = _.flattenDeep(items);
-
-console.log(newItems);
+stream.on('error', (error)=>{
+    console.log(error);
+    
+})
